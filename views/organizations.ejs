@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="../script.js" defer></script>
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Roboto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="">Connect</a>
+        <% if(locals.loggedIn == true){ %> 
+            <a href="">Logout</a>
+        <% }else { %> 
+            <a href="/">Login/Register</a>
+        <% } %> 
+    </nav>
+    <Header class="page-header">
+        <div class="header-text header-hero">
+            <h1 class="close-text">Browse Organizations</h1>
+            <h2>or register your own. </h2>
+            <a href="/organizations/create">Register Your Org</a>
+        </div>
+    </Header>
+    <main>
+        <section>
+            <div class="container grid">
+                <%locals.orgs.forEach(org => { %>
+                    <a href="/organizations/<%= org.id %>">
+                    <div class="card">
+                        <div class="card-content">
+                            <h2><%= org.name %> </h2>
+                            <h3><%= org.state %> </h3>
+                        </div>
+                    </div>
+                    </a>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
